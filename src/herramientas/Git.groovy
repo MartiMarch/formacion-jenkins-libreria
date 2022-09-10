@@ -4,7 +4,7 @@ class Git {
     private def steps
 
     Git(steps){
-        this.steps steps
+        this.steps = steps
     }
 
     def clone(String http_repo){
