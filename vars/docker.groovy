@@ -7,7 +7,7 @@ def prune(steps){
 
 def createDockerfile(steps, type){
     Docker docker = new Docker(steps)
-    docker.commonImage(type)
+    docker.createDockerfile(type)
 }
 
 def printDockerfile(steps){
