@@ -1,1 +1,21 @@
+import herramientas.Docker
 
+def prune(steps){
+    Docker docker = new Docker(steps)
+    docker.prune()
+}
+
+def commonImage(steps, type){
+    Docker docker = new Docker(steps)
+    docker.commonImage(type)
+}
+
+def printDockerfile(steps){
+    Docker docker = new Docker(steps)
+    docker.printDockerfile()
+}
+
+def build(steps, type){
+    Docker docker = new Docker(steps)
+    docker.build(type)
+}
