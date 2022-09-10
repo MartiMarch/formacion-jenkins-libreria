@@ -11,7 +11,7 @@ class Docker {
         steps.sh "docker image prune -a -f"
     }
 
-    def commonImage(String type){
+    def createDockerfile(String type){
         List types = ["java"]
         switch(type){
             case "java":

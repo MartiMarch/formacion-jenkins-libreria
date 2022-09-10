@@ -5,7 +5,7 @@ def prune(steps){
     docker.prune()
 }
 
-def commonImage(steps, type){
+def createDockerfile(steps, type){
     Docker docker = new Docker(steps)
     docker.commonImage(type)
 }
