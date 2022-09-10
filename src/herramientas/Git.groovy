@@ -8,10 +8,11 @@ class Git {
     }
 
     def clone(String http_repo){
-        this.steps.sh "rm -rf ./*"
+        steps.sh "rm -rf ./*"
         http_repo = http_repo.substring(7, http_repo.length())
-        this.steps.withCredentials([this.steps.usernamePassword(credentialsId: 'GITHUB', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]){
-            this.steps.sh "git clone https://${this.steps.GIT_USER}:${this.steps.GIT_PASS}@" + http_repo
+        steps.sh "${http_repo}"
+        steps.withCredentials([steps.usernamePassword(credentialsId: 'GITHUB', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]){
+            steps.sh "git clone https://${steps.GIT_USER}:${steps.GIT_PASS}@" + http_repo
         }
     }
 }
