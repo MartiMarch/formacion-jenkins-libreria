@@ -1,7 +1,7 @@
 import herramientas.Git
 
-def clone(def http_url)
+def clone(def steps, def http_url)
 {
-    Git git = new Git()
+    Git git = new Git(steps)
     git.clone(http_url)
 }

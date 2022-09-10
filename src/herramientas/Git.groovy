@@ -1,16 +1,17 @@
 package herramientas
 
 class Git {
-    private def gitUser = ""
-    private def gitPass = ""
+    private def steps
 
-    Git(gitUser, gitPass){
-        this.gitUser = gitUser
-        this.gitPass = gitPass
+    Git(steps){
+        this.steps steps
     }
 
     clone(String http_repo){
-        sh "rm -rf ./*"
-        sh "git clone https://" + this.gitUser + ":" + this.gitPass + "@" + http_repo.substring(7, http_repo.length())
+        this.steps.sh "rm -rf ./*"
+        http_repo = http_repo.substring(7, http_repo.length())
+        this.steps.withCredentials([this.steps.usernamePassword(credentialsId: 'GITHUB', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]){
+            this.steps.sh "git clone https://${GIT_USER}:${GIT_PASS}@" + http_repo
+        }
     }
 }
