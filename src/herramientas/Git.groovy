@@ -7,7 +7,7 @@ class Git {
         this.steps steps
     }
 
-    clone(String http_repo){
+    def clone(String http_repo){
         this.steps.sh "rm -rf ./*"
         http_repo = http_repo.substring(7, http_repo.length())
         this.steps.withCredentials([this.steps.usernamePassword(credentialsId: 'GITHUB', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]){
